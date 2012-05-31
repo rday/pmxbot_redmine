@@ -103,7 +103,10 @@ class Redmine(threading.Thread):
                             except Exception, e:
                                 log.warning(e)
                                 receiving = False
+                                sock.close()
+                                sockets.remove(sock)
                         else:
+                            receiving = False
                             sock.close()
                             sockets.remove(sock)
 
